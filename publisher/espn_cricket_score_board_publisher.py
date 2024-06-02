@@ -4,7 +4,7 @@ from publisher.publisher import Publisher
 from subscriber.subscriber import Subscriber
 
 
-class CricketScoreBoardPublisher(Publisher):
+class ESPNCricketScoreBoardPublisher(Publisher):
     __runs: int
     __wickets: int
     __over: float
