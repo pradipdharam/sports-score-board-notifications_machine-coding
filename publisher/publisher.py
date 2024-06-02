@@ -30,3 +30,18 @@ class Publisher(abc.ABC):
     @property
     def over(self):
         pass
+
+    @abc.abstractmethod
+    @property
+    def goal1(self):
+        pass
+
+    @abc.abstractmethod
+    @property
+    def goal2(self):
+        pass
+
+    @abc.abstractmethod
+    @property
+    def duration(self):
+        pass
