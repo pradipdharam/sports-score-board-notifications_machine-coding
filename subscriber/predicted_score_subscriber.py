@@ -21,3 +21,19 @@ class PredictedScoreSubscriber(Subscriber):
 
     def unsubscribe(self, subscriber: Subscriber):
         self.__publisher.unsubscribe(self)
+
+    @property
+    def runs(self):
+        return self.__runs
+
+    @property
+    def wickets(self):
+        return self.__wickets
+
+    @property
+    def over(self):
+        return self.__over
+
+    @property
+    def publisher(self):
+        return self.__publisher
