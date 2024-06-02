@@ -10,12 +10,24 @@ class PredictedScoreSubscriber(Subscriber):
     __over: float
     __publishers: List[Publisher]
 
+    __goal1: int
+    __goal2: int
+    __duration: float
+
     def __init__(self, publishers: List[Publisher]):
         self.__publishers = publishers
         for publisher in self.__publishers:
             publisher.subscribe(self)
 
     def update(self, publisher: Publisher):
+        """
+        Here we do not know which publisher called this method, whether cricket or foot ball related.
+        Problem here is that we do not know which publisher called this update method.
+        If its cricket related publisher; update runs, wicket, over
+        If its football related publisher; update goal1, goal2, duration
+        However, IT'S A BAD DESIGN
+        IT'S A MAJOR PROBLEM IF INTRODUCING IF ELSE BLOCKS
+        """
         self.__runs = publisher.runs
         self.__wickets = publisher.wickets
         self.__over = publisher.over
