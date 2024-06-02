@@ -1,3 +1,4 @@
+from publisher.publisher import Publisher
 from subscriber.subscriber import Subscriber
 
 
@@ -5,7 +6,7 @@ class RunRateSubscriber(Subscriber):
     __runs: int
     __wickets: int
     __over: float
-    __cricket_score_board_publisher: CricketScoreBoardPublisher
+    __publisher: Publisher
 
     def update(self, runs: int, wickets: int, over: float):
         self.__runs = runs
@@ -16,7 +17,7 @@ class RunRateSubscriber(Subscriber):
         # update the board display with projected score
 
     def subscribe(self, subscriber: Subscriber):
-        self.__cricket_score_board_publisher.subscribe(self)
+        self.__publisher.subscribe(self)
 
     def unsubscribe(self, subscriber: Subscriber):
-        self.__cricket_score_board_publisher.unsubscribe(self)
+        self.__publisher.unsubscribe(self)
