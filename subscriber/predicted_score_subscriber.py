@@ -8,6 +8,9 @@ class PredictedScoreSubscriber(Subscriber):
     __over: float
     __publisher: Publisher
 
+    def __init__(self, publisher: Publisher):
+        self.__publisher = publisher
+
     def update(self, runs: int, wickets: int, over: float):
         self.__runs = runs
         self.__wickets = wickets
@@ -15,6 +18,7 @@ class PredictedScoreSubscriber(Subscriber):
         # persists details in db
         # calculate projected score
         # update the board display with projected score
+        print("PredictedScoreSubscriber: runs=", self.__runs, "wickets=", self.__wickets, "over=", self.__over)
 
     def subscribe(self, subscriber: Subscriber):
         self.__publisher.subscribe(self)
