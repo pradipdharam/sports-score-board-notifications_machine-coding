@@ -25,3 +25,15 @@ class CricketScoreBoardPublisher(Publisher):
 
     def unsubscribe(self, subscriber: Subscriber):
         self.__subscribers.remove(subscriber)
+
+    @property
+    def runs(self):
+        return self.__runs
+
+    @property
+    def wickets(self):
+        return self.__wickets
+
+    @property
+    def over(self):
+        return self.__over

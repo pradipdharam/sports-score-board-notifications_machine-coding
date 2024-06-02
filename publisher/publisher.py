@@ -15,3 +15,18 @@ class Publisher(abc.ABC):
     @abc.abstractmethod
     def unsubscribe(self, subscriber: Subscriber):
         pass
+
+    @abc.abstractmethod
+    @property
+    def runs(self):
+        pass
+
+    @abc.abstractmethod
+    @property
+    def wickets(self):
+        pass
+
+    @abc.abstractmethod
+    @property
+    def over(self):
+        pass

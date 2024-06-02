@@ -7,5 +7,5 @@ class Subscriber(ABC):
     """
 
     @abc.abstractmethod
-    def update(self, runs: int, wickets: int, over: float):
+    def update(self):
         pass
