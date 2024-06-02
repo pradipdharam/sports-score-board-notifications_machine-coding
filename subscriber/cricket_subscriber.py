@@ -4,7 +4,7 @@ from abc import ABC
 from publisher.cricket_publisher import CricketPublisher
 
 
-class Subscriber(ABC):
+class CricketSubscriber(ABC):
     """ Interface
     """
 

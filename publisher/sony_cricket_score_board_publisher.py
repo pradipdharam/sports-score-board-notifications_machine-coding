@@ -1,14 +1,14 @@
 from typing import List
 
 from publisher.cricket_publisher import CricketPublisher
-from subscriber.subscriber import Subscriber
+from subscriber.cricket_subscriber import CricketSubscriber
 
 
 class SonyCricketScoreBoardPublisher(CricketPublisher):
     __runs: int
     __wickets: int
     __over: float
-    __subscribers: List[Subscriber]
+    __subscribers: List[CricketSubscriber]
 
     def __init__(self):
         self.__subscribers = []
@@ -20,10 +20,10 @@ class SonyCricketScoreBoardPublisher(CricketPublisher):
         for subscriber in self.__subscribers:
             subscriber.update(self)
 
-    def subscribe(self, subscriber: Subscriber):
+    def subscribe(self, subscriber: CricketSubscriber):
         self.__subscribers.append(subscriber)
 
-    def unsubscribe(self, subscriber: Subscriber):
+    def unsubscribe(self, subscriber: CricketSubscriber):
         self.__subscribers.remove(subscriber)
 
     @property

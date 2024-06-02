@@ -1,10 +1,10 @@
 from typing import List
 
 from publisher.cricket_publisher import CricketPublisher
-from subscriber.subscriber import Subscriber
+from subscriber.cricket_subscriber import CricketSubscriber
 
 
-class RunRateSubscriber(Subscriber):
+class RunRateSubscriber(CricketSubscriber):
     __runs: int
     __over: float
     __publishers: List[CricketPublisher]

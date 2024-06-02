@@ -1,6 +1,6 @@
 import abc
 
-from subscriber.subscriber import Subscriber
+from subscriber.cricket_subscriber import CricketSubscriber
 
 
 class CricketPublisher(abc.ABC):
@@ -9,11 +9,11 @@ class CricketPublisher(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def subscribe(self, subscriber: Subscriber):
+    def subscribe(self, subscriber: CricketSubscriber):
         pass
 
     @abc.abstractmethod
-    def unsubscribe(self, subscriber: Subscriber):
+    def unsubscribe(self, subscriber: CricketSubscriber):
         pass
 
     @abc.abstractmethod
