@@ -12,6 +12,8 @@ class PredictedScoreSubscriber(Subscriber):
 
     def __init__(self, publishers: List[Publisher]):
         self.__publishers = publishers
+        for publisher in self.__publishers:
+            publisher.subscribe(self)
 
     def update(self, publisher: Publisher):
         self.__runs = publisher.runs
@@ -22,11 +24,17 @@ class PredictedScoreSubscriber(Subscriber):
         # update the board display with projected score
         print("PredictedScoreSubscriber: runs=", self.__runs, "wickets=", self.__wickets, "over=", self.__over)
 
-    def subscribe(self, subscriber: Subscriber):
-        self.__publisher.subscribe(self)
+    def subscribe(self, publisher: Publisher):
+        """Add one publisher for this subscriber
+        """
+        self.__publishers.append(publisher)
+        publisher.subscribe(self)
 
-    def unsubscribe(self, subscriber: Subscriber):
-        self.__publisher.unsubscribe(self)
+    def unsubscribe(self, publisher: Publisher):
+        """Remove one publisher for this subscriber
+        """
+        self.__publishers.remove(publisher)
+        publisher.unsubscribe(self)
 
     @property
     def runs(self):
@@ -41,5 +49,5 @@ class PredictedScoreSubscriber(Subscriber):
         return self.__over
 
     @property
-    def publisher(self):
-        return self.__publisher
+    def publishers(self):
+        return self.__publishers
