@@ -1,7 +1,7 @@
 from typing import List
 
 from publisher.cricket_score_board_publisher import CricketScoreBoardPublisher
-from publisher.publisher import Publisher
+from publisher.cricket_publisher import CricketPublisher
 from subscriber.predicted_score_subscriber import PredictedScoreSubscriber
 from subscriber.run_rate_subscriber import RunRateSubscriber
 from subscriber.subscriber import Subscriber
@@ -40,7 +40,7 @@ class PubSubTester:
 
     @staticmethod
     def connect(subscribers: List[Subscriber],
-                publisher: Publisher):
+                publisher: CricketPublisher):
         """subscribers_subscribe_to_publisher or connect publisher & subscriber
         """
         for subscriber in subscribers:

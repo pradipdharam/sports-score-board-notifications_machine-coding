@@ -1,10 +1,10 @@
 from typing import List
 
-from publisher.publisher import Publisher
+from publisher.cricket_publisher import CricketPublisher
 from subscriber.subscriber import Subscriber
 
 
-class CricketScoreBoardPublisher(Publisher):
+class CricketScoreBoardPublisher(CricketPublisher):
     __runs: int
     __wickets: int
     __over: float

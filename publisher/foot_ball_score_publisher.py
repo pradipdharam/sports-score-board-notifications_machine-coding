@@ -1,10 +1,10 @@
 from typing import List
 
-from publisher.publisher import Publisher
+from publisher.cricket_publisher import FootBallPublisher
 from subscriber.subscriber import Subscriber
 
 
-class FootBallScorePublisher(Publisher):
+class FootBallScorePublisher(FootBallPublisher):
     __goal1: int
     __goal2: int
     __duration: float
@@ -13,10 +13,10 @@ class FootBallScorePublisher(Publisher):
     def __init__(self):
         self.__subscribers = []
 
-    def notify_all(self, runs: int, wickets: int, over: float):
-        self.__runs = runs
-        self.__wickets = wickets
-        self.__over = over
+    def notify_all(self, goal1: int, goal2: int, duration: float):
+        self.__goal1 = goal1
+        self.__goal1 = goal2
+        self.__duration = duration
         for subscriber in self.__subscribers:
             subscriber.update(self)
 
@@ -25,18 +25,6 @@ class FootBallScorePublisher(Publisher):
 
     def unsubscribe(self, subscriber: Subscriber):
         self.__subscribers.remove(subscriber)
-
-    @property
-    def runs(self):
-        raise RuntimeError("Not allowed for FootBallScorePublisher")
-
-    @property
-    def wickets(self):
-        raise RuntimeError("Not allowed for FootBallScorePublisher")
-
-    @property
-    def over(self):
-        raise RuntimeError("Not allowed for FootBallScorePublisher")
 
     @property
     def goal1(self):

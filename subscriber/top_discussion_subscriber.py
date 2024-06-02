@@ -1,6 +1,6 @@
 from typing import List
 
-from publisher.publisher import Publisher
+from publisher.cricket_publisher import CricketPublisher
 from subscriber.subscriber import Subscriber
 
 
@@ -8,14 +8,14 @@ class TopDiscussionSubscriber(Subscriber):
     __runs: int
     __wickets: int
     __over: float
-    __publishers: List[Publisher]
+    __publishers: List[CricketPublisher]
 
-    def __init__(self, publishers: List[Publisher]):
+    def __init__(self, publishers: List[CricketPublisher]):
         self.__publishers = publishers
         for publisher in self.__publishers:
             publisher.subscribe(self)
 
-    def update(self, publisher: Publisher):
+    def update(self, publisher: CricketPublisher):
         self.__runs = publisher.runs
         self.__wickets = publisher.wickets
         self.__over = publisher.over
@@ -24,13 +24,13 @@ class TopDiscussionSubscriber(Subscriber):
         # update the board display with projected score
         print("TopDiscussionSubscriber: runs=", self.__runs, "wickets=", self.__wickets, "over=", self.__over)
 
-    def subscribe(self, publisher: Publisher):
+    def subscribe(self, publisher: CricketPublisher):
         """Add one publisher for this subscriber
         """
         self.__publishers.append(publisher)
         publisher.subscribe(self)
 
-    def unsubscribe(self, publisher: Publisher):
+    def unsubscribe(self, publisher: CricketPublisher):
         """Remove one publisher for this subscriber
         """
         self.__publishers.remove(publisher)
